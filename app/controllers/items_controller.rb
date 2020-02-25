@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     if @item.save
       turbolinks_redirect(items_path, action: "restore")
     else
-      raise "error"
+      flash[:error] = "An error occurred."
       turbolinks_redirect(new_item_path, action: "replace")
     end
   end
