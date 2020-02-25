@@ -3,9 +3,6 @@
     window.webkit.messageHandlers.ApplicationController.postMessage(<%= raw @navigation.to_json.html_safe.to_json %>);
   </script>
 <% else %>
-  <pre>
-    <%= @navigation.to_json.html_safe %>
-  </pre>
   <% @navigation.each do |nav| %>
     <%= link_to nav[:title], nav[:path] %>
   <% end %>
