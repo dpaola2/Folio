@@ -1,14 +1,13 @@
 <% if ios_request? %>
   <script>
-    window.webkit.messageHandlers.ApplicationController.postMessage([
-      {
-        title: "Home", path: items_path
-      },
-      {
-        title: "Add Item", path: new_item_path
-      }
-    ].to_json);
+    window.webkit.messageHandlers.ApplicationController.postMessage(<%= raw @navigation.to_json.html_safe.to_json %>);
   </script>
 <% else %>
-  Nav goes here
+  <pre>
+    <%= @navigation.to_json.html_safe %>
+  </pre>
+  <% @navigation.each do |nav| %>
+    <%= link_to nav[:title], nav[:path] %>
+  <% end %>
+  <hr />
 <% end %>

@@ -1,6 +1,16 @@
 module ApplicationHelper
-
   # Mobile App Helpers
+  def navigation
+    @navigation = [
+      {
+        title: "Home", path: items_path
+      },
+      {
+        title: "Add Item", path: new_item_path
+      }
+    ]
+  end
+
   def ios_request?
     has_user_agent? && user_agent.match(/(Folio)/).present?
   end
