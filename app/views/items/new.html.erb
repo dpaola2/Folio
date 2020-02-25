@@ -1,0 +1,8 @@
+<h1>New Item</h1>
+
+<%= form_with(model: Item.new, remote: true) do |f| %>
+  <%= f.label :url %>
+  <%= f.text_field :url, placeholder: "URL" %>
+
+  <%= f.submit "Add via URL" %>
+<% end %>
