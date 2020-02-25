@@ -10,10 +10,10 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
 
     if @item.save
-      redirect_to items_path
+      turbolinks_redirect(items_path, action: "restore")
     else
       raise "error"
-      redirect_to new_item_path
+      turbolinks_redirect(new_item_path, action: "replace")
     end
   end
 

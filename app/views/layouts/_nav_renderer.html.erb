@@ -1,0 +1,14 @@
+<% if ios_request? %>
+  <script>
+    window.webkit.messageHandlers.ApplicationController.postMessage([
+      {
+        title: "Home", path: items_path
+      },
+      {
+        title: "Add Item", path: new_item_path
+      }
+    ].to_json);
+  </script>
+<% else %>
+  Nav goes here
+<% end %>
