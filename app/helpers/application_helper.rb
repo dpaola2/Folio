@@ -1,4 +1,9 @@
 module ApplicationHelper
+  def mercury(url)
+    path = Rails.root.join("node_modules", "@postlight", "mercury-parser", "cli.js")
+    JSON.parse(`#{path} #{url}`)
+  end
+
   # Mobile App Helpers
   def navigation
     @navigation = [
