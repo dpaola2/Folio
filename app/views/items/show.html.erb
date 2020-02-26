@@ -1,7 +1,24 @@
-<%= link_to "View original (in new window)", @item.url, target: "_blank" %>
+<div class="row">
+  <div class="col">
+    <%= link_to @item.url, class: "btn btn-sm btn-info", target: "_blank" do %>
+      <i class="fas fa-external-link-square-alt"></i>
+      &nbsp;
+      View original
+    <% end %>
+    <%= link_to item_parse_path(item_id: @item.id), class: "btn btn-sm btn-info" do %>
+      <i class="fas fa-cogs"></i>
+      &nbsp;
+      Fetch and store
+    <% end %>
+  </div>
+</div>
 
-<% if @item.body.blank? %>
-  <i>No content parsed.</i><%= link_to "Try again", item_parse_path(item_id: @item.id) %>
-<% else %>
-  <%= @item.body.html_safe %>
-<% end %>
+<div class="row">
+  <div class="col">
+    <% if @item.body.blank? %>
+      <i>No content parsed.</i>
+    <% else %>
+      <%= @item.body.html_safe %>
+    <% end %>
+  </div>
+</div>
