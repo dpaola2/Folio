@@ -9,4 +9,16 @@
 #  updated_at :datetime         not null
 #
 class Item < ApplicationRecord
+  include Mercury
+  after_create :parse!
+  validates :url, presence: true
+
+  def parse!
+    json = fetch
+
+    update(
+      title: json["title"],
+      body: json["content"]
+    )
+  end
 end

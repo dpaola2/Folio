@@ -18,12 +18,22 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+    find_item
+  end
+
+  def parse
+    find_item(:item_id)
+    @item.parse!
+    turbolinks_redirect(item_path(@item), action: "replace")
   end
 
   private
 
   def item_params
     params.require(:item).permit(:url)
+  end
+
+  def find_item(key=:id)
+    @item = Item.find(params[key])
   end
 end
