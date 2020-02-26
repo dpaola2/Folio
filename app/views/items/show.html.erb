@@ -1,1 +1,3 @@
 <%= link_to "View original (in new window)", @item.url, target: "_blank" %>
+
+<%= simple_format(`mercury-parser #{@item.url}`) %>
